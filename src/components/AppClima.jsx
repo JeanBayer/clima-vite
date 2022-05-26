@@ -1,9 +1,13 @@
-import React from 'react'
+import Formulario from "./Formulario";
 
 const AppClima = () => {
   return (
-    <div>AppClima</div>
-  )
-}
+    <>
+      <main className="dos-columnas">
+        <Formulario />
+      </main>
+    </>
+  );
+};
 
-export default AppClima
+export default AppClima;
