@@ -8,8 +8,9 @@ const ClimaProvider = ({ children }) => {
     ciudad: "",
     pais: "",
   });
-
   const [resultado, setResultado] = useState({});
+  const [cargando, setCargando] = useState(false);
+  const [error, setError] = useState(false);
 
   const datosBusqueda = (e) => {
     setBusqueda({
@@ -19,6 +20,8 @@ const ClimaProvider = ({ children }) => {
   };
 
   const consultarClima = async (datos) => {
+    setCargando(true);
+    setError(false);
     try {
       const { ciudad, pais } = datos;
       const appId = import.meta.env.VITE_API_KEY;
@@ -32,7 +35,9 @@ const ClimaProvider = ({ children }) => {
       const { data: dataClima } = await axios.get(urlClima);
       setResultado(dataClima);
     } catch (error) {
-      console.log(error);
+      setError(true);
+    } finally {
+      setCargando(false);
     }
   };
 
@@ -43,6 +48,8 @@ const ClimaProvider = ({ children }) => {
         datosBusqueda,
         consultarClima,
         resultado,
+        cargando,
+        error
       }}
     >
       {children}
