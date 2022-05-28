@@ -9,7 +9,7 @@ const AppClima = () => {
     <>
       <main className="dos-columnas">
         <Formulario />
-        {cargando ? <Spinner /> : <Resultado />}
+        {cargando ? <Spinner /> : resultado?.name && <Resultado />}
       </main>
     </>
   );

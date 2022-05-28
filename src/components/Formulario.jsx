@@ -47,6 +47,7 @@ const Formulario = () => {
             <option value="CR">Costa Rica</option>
             <option value="ES">España</option>
             <option value="PE">Perú</option>
+            <option value="CL">Chile</option>
           </select>
         </div>
         <input type="submit" value="consulta clima" />
