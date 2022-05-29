@@ -3,9 +3,10 @@ import Resultado from "./Resultado";
 import useClima from "../hooks/useClima";
 import Spinner from "./Spinner";
 import Error from "./Error";
+import CardFavorito from "./CardFavorito";
 
 const AppClima = () => {
-  const { resultado, cargando, error } = useClima();
+  const { resultado, cargando, error, listaFavoritos } = useClima();
   return (
     <>
       <main className="dos-columnas">
@@ -18,6 +19,12 @@ const AppClima = () => {
           error && <Error />
         )}
       </main>
+      <section className="section_favoritos">
+        {Object.values(listaFavoritos).length > 0 &&
+          listaFavoritos.map((lugar) => (
+            <CardFavorito key={lugar.id} resultado={lugar} />
+          ))}
+      </section>
     </>
   );
 };

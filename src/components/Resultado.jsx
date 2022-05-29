@@ -2,7 +2,7 @@ import useClima from "../hooks/useClima";
 import { CLIMA } from "../helpers/climas";
 
 const Resultado = () => {
-  const { resultado, error } = useClima();
+  const { resultado, guardarClima } = useClima();
   const { name, main, weather } = resultado;
   const { id } = weather[0];
   const toCelsius = (kelvin) => {
@@ -17,7 +17,13 @@ const Resultado = () => {
       }}
     >
       <div className="clima">
-        <img src="/assets/icon/icon_add.png" className="boton_añadir" />
+        <img
+          src="/assets/icon/icon_add.png"
+          className="boton_añadir"
+          onClick={() => {
+            guardarClima(resultado);
+          }}
+        />
         <h2>El clima de {name} es:</h2>
         <p>
           {toCelsius(main.temp)} <span>&#x2103;</span>

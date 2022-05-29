@@ -11,6 +11,7 @@ const ClimaProvider = ({ children }) => {
   const [resultado, setResultado] = useState({});
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState(false);
+  const [listaFavoritos, setListaFavoritos] = useState([]);
 
   const datosBusqueda = (e) => {
     setBusqueda({
@@ -42,6 +43,15 @@ const ClimaProvider = ({ children }) => {
     }
   };
 
+  const guardarClima = (clima) => {
+    console.log({ clima });
+    const existe = listaFavoritos.find((favorito) => favorito.id === clima.id);
+    if (existe) {
+      return;
+    }
+    setListaFavoritos([...listaFavoritos, clima]);
+  };
+
   return (
     <ClimaContext.Provider
       value={{
@@ -51,6 +61,8 @@ const ClimaProvider = ({ children }) => {
         resultado,
         cargando,
         error,
+        guardarClima,
+        listaFavoritos,
       }}
     >
       {children}
