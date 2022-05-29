@@ -197,6 +197,7 @@ input[type="submit"]:hover {
   gap: 17px;
   padding: 2rem 0;
   background: linear-gradient(0deg, #0ea5e9 0%, #74c9f0 24%, #f1f5f9 76%);
+  position: relative;
 }
 
 .section_favoritos::-webkit-scrollbar {

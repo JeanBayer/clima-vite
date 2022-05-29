@@ -59,6 +59,22 @@ const ClimaProvider = ({ children }) => {
     setListaFavoritos(listaFavoritosActualizada);
   };
 
+  const actualizarClima = async () => {
+    const appId = import.meta.env.VITE_API_KEY;
+    const nuevoListaFavoritos = listaFavoritos.map(async (favorito) => {
+      const { coord } = favorito;
+      const { lat, lon } = coord;
+      const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`;
+      const { data } = await axios.get(urlClima);
+      console.log({ data });
+      return data;
+    });
+
+    const resultado = await Promise.all(nuevoListaFavoritos);
+    console.log({ resultado });
+    setListaFavoritos(resultado);
+  };
+
   return (
     <ClimaContext.Provider
       value={{
@@ -70,6 +86,7 @@ const ClimaProvider = ({ children }) => {
         error,
         guardarClima,
         eliminarClima,
+        actualizarClima,
         listaFavoritos,
       }}
     >
