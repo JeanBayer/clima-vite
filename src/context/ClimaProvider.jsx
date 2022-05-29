@@ -52,6 +52,13 @@ const ClimaProvider = ({ children }) => {
     setListaFavoritos([...listaFavoritos, clima]);
   };
 
+  const eliminarClima = (id) => {
+    const listaFavoritosActualizada = listaFavoritos.filter(
+      (favorito) => favorito.id !== id
+    );
+    setListaFavoritos(listaFavoritosActualizada);
+  };
+
   return (
     <ClimaContext.Provider
       value={{
@@ -62,6 +69,7 @@ const ClimaProvider = ({ children }) => {
         cargando,
         error,
         guardarClima,
+        eliminarClima,
         listaFavoritos,
       }}
     >

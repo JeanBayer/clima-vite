@@ -19,7 +19,7 @@ const Resultado = () => {
       <div className="clima">
         <img
           src="/assets/icon/icon_add.png"
-          className="boton_añadir"
+          className="boton"
           onClick={() => {
             guardarClima(resultado);
           }}
