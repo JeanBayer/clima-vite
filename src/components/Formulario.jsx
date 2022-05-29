@@ -13,11 +13,11 @@ const Formulario = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setAlerta("");
     if (Object.values(busqueda).includes("")) {
       setAlerta("Todos los campos son obligatorios");
       return;
     }
-
     consultarClima(busqueda);
   };
 
@@ -37,7 +37,12 @@ const Formulario = () => {
         </div>
         <div className="campo">
           <label htmlFor="pais">País</label>
-          <input list="pais" name="pais" value={pais} onChange={datosBusqueda} />
+          <input
+            list="pais"
+            name="pais"
+            value={pais}
+            onChange={datosBusqueda}
+          />
           <datalist id="pais">
             {countriesCode.map((country) => (
               <option key={country.Code} value={country.Code}>

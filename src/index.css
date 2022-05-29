@@ -2,14 +2,15 @@ body {
   font-family: 'Hubballi', cursive;
   background-color: #f1f5f9;
   font-size: 1.6rem;
-  min-width: 370px;
-  width: 100%;
+
 }
 
 header {
   background-color: #0ea5e9;
   padding: 1.5rem;
   border-bottom: 1rem solid #0284c7;
+  min-width: 370px;
+  width: 100%;
 }
 
 header h1 {
