@@ -26,7 +26,7 @@ const ClimaProvider = ({ children }) => {
       const { ciudad, pais } = datos;
       const appId = import.meta.env.VITE_API_KEY;
       const url = `http://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=${1}&appid=${appId}`;
-
+      console.log({ url });
       const { data } = await axios.get(url);
       const { lat, lon } = data[0];
 
@@ -35,6 +35,7 @@ const ClimaProvider = ({ children }) => {
       const { data: dataClima } = await axios.get(urlClima);
       setResultado(dataClima);
     } catch (error) {
+      console.log(error);
       setError(true);
     } finally {
       setCargando(false);
@@ -49,7 +50,7 @@ const ClimaProvider = ({ children }) => {
         consultarClima,
         resultado,
         cargando,
-        error
+        error,
       }}
     >
       {children}

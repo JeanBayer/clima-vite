@@ -2,6 +2,8 @@ body {
   font-family: 'Hubballi', cursive;
   background-color: #f1f5f9;
   font-size: 1.6rem;
+  min-width: 370px;
+  width: 100%;
 }
 
 header {
@@ -62,6 +64,7 @@ form {
 .campo input,
 .campo select {
   all: unset;
+  box-sizing: border-box;
   border: 1px solid #cbd5e1;
   width: 100%;
   border-radius: 1rem;
@@ -80,6 +83,7 @@ input[type="submit"] {
   border: none;
   width: 100%;
   transition: background-color .3s ease;
+  max-width: 400px;
 }
 
 @media (min-width: 768px) {

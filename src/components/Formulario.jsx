@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useClima from "../hooks/useClima";
+import { countriesCode } from "../helpers/countriesCode";
 
 const Formulario = () => {
   const [alerta, setAlerta] = useState("");
   const { busqueda, datosBusqueda, consultarClima } = useClima();
   const { ciudad, pais } = busqueda;
+
+  useEffect(() => {
+    console.log({ countriesCode });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,23 +37,14 @@ const Formulario = () => {
         </div>
         <div className="campo">
           <label htmlFor="pais">País</label>
-          <select
-            type="select"
-            id="pais"
-            name="pais"
-            value={pais}
-            onChange={datosBusqueda}
-          >
-            <option value="">-- Seleccione --</option>
-            <option value="US">Estados Unidos</option>
-            <option value="MX">México</option>
-            <option value="AR">Argentina</option>
-            <option value="CO">Colombia</option>
-            <option value="CR">Costa Rica</option>
-            <option value="ES">España</option>
-            <option value="PE">Perú</option>
-            <option value="CL">Chile</option>
-          </select>
+          <input list="pais" name="pais" value={pais} onChange={datosBusqueda} />
+          <datalist id="pais">
+            {countriesCode.map((country) => (
+              <option key={country.Code} value={country.Code}>
+                {country.Name}
+              </option>
+            ))}
+          </datalist>
         </div>
         <input type="submit" value="consulta clima" />
       </form>

@@ -29,4 +29,5 @@ const CLIMA = [
   },
 ];
 
+
 export { CLIMA };
