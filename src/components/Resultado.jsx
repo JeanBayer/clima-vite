@@ -17,6 +17,7 @@ const Resultado = () => {
       }}
     >
       <div className="clima">
+        <img src="/assets/icon/icon_add.png" className="boton_añadir" />
         <h2>El clima de {name} es:</h2>
         <p>
           {toCelsius(main.temp)} <span>&#x2103;</span>

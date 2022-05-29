@@ -5,12 +5,18 @@ import Spinner from "./Spinner";
 import Error from "./Error";
 
 const AppClima = () => {
-  const { resultado, cargando } = useClima();
+  const { resultado, cargando, error } = useClima();
   return (
     <>
       <main className="dos-columnas">
         <Formulario />
-        {cargando ? <Spinner /> : resultado?.name ? <Resultado /> : <Error></Error>}
+        {cargando ? (
+          <Spinner />
+        ) : resultado?.name ? (
+          <Resultado />
+        ) : (
+          error && <Error />
+        )}
       </main>
     </>
   );
