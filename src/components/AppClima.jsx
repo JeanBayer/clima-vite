@@ -29,19 +29,21 @@ const AppClima = () => {
         )}
       </main>
       {Object.values(listaFavoritos).length > 0 && (
-        <section className="section_favoritos">
+        <section className="section">
           <img
             src="/assets/icon/icon_refresh.png"
             className="boton"
             onClick={actualizarClima}
           />
-          {listaFavoritos.map((lugar) => (
-            <CardFavorito
-              key={lugar.id}
-              resultado={lugar}
-              eliminarClima={eliminarClima}
-            />
-          ))}
+          <section className="section_favoritos">
+            {listaFavoritos.map((lugar) => (
+              <CardFavorito
+                key={lugar.id}
+                resultado={lugar}
+                eliminarClima={eliminarClima}
+              />
+            ))}
+          </section>
         </section>
       )}
     </>

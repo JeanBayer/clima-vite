@@ -1,5 +1,5 @@
 const CardFavorito = ({ resultado, eliminarClima }) => {
-  const { name, main } = resultado;
+  const { name, main, ultimo } = resultado;
   const toCelsius = (kelvin) => {
     return Math.round(kelvin - 273.15);
   };
@@ -15,6 +15,7 @@ const CardFavorito = ({ resultado, eliminarClima }) => {
       <h3>
         {toCelsius(main.temp)} <span>&#x2103;</span>
       </h3>
+      <p>{ultimo}<span>Última Actualización</span></p>
     </div>
   );
 };

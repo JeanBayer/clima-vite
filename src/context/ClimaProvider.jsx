@@ -19,16 +19,6 @@ const ClimaProvider = ({ children }) => {
     localStorage.setItem("listaFavoritos", JSON.stringify(listaFavoritos));
   }, [listaFavoritos]);
 
-  // useEffect(() => {
-  //   const listaFavoritosLS = JSON.parse(
-  //     localStorage.getItem("listaFavoritos") ?? []
-  //   );
-  //   console.log({ listaFavoritosLS });
-  //   if (listaFavoritosLS.length > 0) {
-  //     setListaFavoritos(listaFavoritosLS);
-  //   }
-  // }, []);
-
   const datosBusqueda = (e) => {
     setBusqueda({
       ...busqueda,
@@ -65,6 +55,7 @@ const ClimaProvider = ({ children }) => {
     if (existe) {
       return;
     }
+    clima.ultimo = new Date().toLocaleString();
     setListaFavoritos([...listaFavoritos, clima]);
   };
 
@@ -83,6 +74,7 @@ const ClimaProvider = ({ children }) => {
       const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`;
       const { data } = await axios.get(urlClima);
       console.log({ data });
+      data.ultimo = new Date().toLocaleString();
       return data;
     });
 
