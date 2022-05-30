@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import axios from "axios";
 
 const ClimaContext = createContext();
@@ -11,7 +11,23 @@ const ClimaProvider = ({ children }) => {
   const [resultado, setResultado] = useState({});
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState(false);
-  const [listaFavoritos, setListaFavoritos] = useState([]);
+  const [listaFavoritos, setListaFavoritos] = useState(
+    JSON.parse(localStorage.getItem("listaFavoritos") ?? [])
+  );
+
+  useEffect(() => {
+    localStorage.setItem("listaFavoritos", JSON.stringify(listaFavoritos));
+  }, [listaFavoritos]);
+
+  // useEffect(() => {
+  //   const listaFavoritosLS = JSON.parse(
+  //     localStorage.getItem("listaFavoritos") ?? []
+  //   );
+  //   console.log({ listaFavoritosLS });
+  //   if (listaFavoritosLS.length > 0) {
+  //     setListaFavoritos(listaFavoritosLS);
+  //   }
+  // }, []);
 
   const datosBusqueda = (e) => {
     setBusqueda({
