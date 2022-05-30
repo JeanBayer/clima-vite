@@ -12,7 +12,7 @@ const ClimaProvider = ({ children }) => {
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState(false);
   const [listaFavoritos, setListaFavoritos] = useState(
-    JSON.parse(localStorage.getItem("listaFavoritos") ?? [])
+    JSON.parse(localStorage.getItem("listaFavoritos")) ?? []
   );
 
   useEffect(() => {
